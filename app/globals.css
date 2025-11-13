@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+body {
+  @apply min-h-screen;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
+.starfield {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(148, 163, 253, 0.35), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(45, 212, 191, 0.3), transparent 50%),
+    radial-gradient(circle at 10% 90%, rgba(59, 130, 246, 0.4), transparent 50%);
+}
+
+@keyframes float-stars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-300px); }
+}
+
+.starfield::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.15;
+  animation: float-stars 60s linear infinite;
+}
+
+.starfield::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 20%, #0a0a0a 90%);
+}
